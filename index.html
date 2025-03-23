@@ -13,21 +13,38 @@
 				<h1>Student Portal</h1>
 				<form action="#" method="#">
 					<label for="email">Email</label>
-					<input
-						type="email"
-						name="email"
-						id="email"
-						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-						autocomplete="email"
-						required />
-					<label for="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						id="password"
-						minlength="6"
-						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-						required />
+					<div class="email-container">
+						<img
+							src="./public/email_24dp_000000.svg"
+							alt="Email Icon"
+							class="email-icon" />
+						<input
+							type="email"
+							name="email"
+							id="email"
+							pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+							class="email-input"
+							autocomplete="email"
+							required />
+					</div>
+
+					<label for="password" class="password-label">Password</label>
+					<div class="password-container">
+						<img
+							src="./public/lock_24dp_000000.svg" class="password-icon"
+							alt="Password Icon" />
+						<input
+							type="password"
+							name="password"
+							id="password"
+							minlength="6"
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+							class="password-input"
+							required />
+							<img src="" alt="">
+					</div>
+
+					<a href="#" class="forgot-pass">Forgot Password?</a>
 					<div class="buttons">
 						<button type="#">Login</button>
 						<p>
