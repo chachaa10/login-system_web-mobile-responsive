@@ -1,1 +1,98 @@
-		
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+.container {
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+	border-radius: 12px;
+	background: rgb(255, 255, 255, 0.98);
+	padding: 1.5em 2em;
+	width: 100%;
+	max-width: 400px;
+}
+
+h1 {
+	margin-bottom: 1.5rem;
+	font-weight: 700;
+	font-size: clamp(1.5rem, 2vw + 1.5rem, 2.5rem);
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	font-weight: 500;
+	font-size: clamp(0.8rem, 3vw + 1rem, 1rem);
+	margin-bottom: 5px;
+
+	&::after {
+		margin-left: 0.1em;
+		content: "*";
+		color: red;
+	}
+}
+
+input {
+	transition: all 0.3s ease;
+	margin-bottom: 1rem;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	padding: 0.8rem;
+	font-size: clamp(0.8rem, 3vw + 1rem, 1rem);
+}
+
+input:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+	border-color: #4299e1;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 0.5em;
+}
+
+button {
+	transition: all 0.3s ease;
+	cursor: pointer;
+	border: none;
+	border-radius: 1.25rem;
+	background: var(--primary-color);
+	padding: 0.8em 1.5em;
+	color: white;
+	font-weight: 600;
+	font-size: clamp(0.8rem, 3vw + 1rem, 1.25rem);
+}
+
+button:hover {
+	background: rgb(2, 25, 100);
+}
+
+p {
+	font-size: clamp(0.5rem, 2vw + 0.5rem, 1.125rem);
+	text-align: center;
+}
+
+a {
+	color: var(--primary-color);
+	font-weight: 500;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+@media (width <= 26.5625rem) {
+	.container {
+		margin: 1em;
+	}
+}

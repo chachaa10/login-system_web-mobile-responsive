@@ -4,23 +4,22 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Login System | CRUD</title>
-		<link rel="stylesheet" href="reset.css" />
+		<link rel="stylesheet" href="default.css" />
 		<link rel="stylesheet" href="index.css" />
 	</head>
 	<body>
-		<div class="container">
-			<h1>Login System</h1>
-			<form action="#" method="#">
-				<div class="form-group">
+		<main class="container">
+			<section>
+				<h1>Student Portal</h1>
+				<form action="#" method="#">
 					<label for="email">Email</label>
 					<input
 						type="email"
 						name="email"
 						id="email"
 						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+						autocomplete="email"
 						required />
-				</div>
-				<div class="form-group">
 					<label for="password">Password</label>
 					<input
 						type="password"
@@ -29,16 +28,15 @@
 						minlength="6"
 						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
 						required />
-				</div>
-				<div class="form-group">
-					<button type="#">Login</button>
-
-					<p>
-						Don't have an account?
-						<a href="register.html">Register</a>
-					</p>
-				</div>
-			</form>
-		</div>
+					<div class="buttons">
+						<button type="#">Login</button>
+						<p>
+							Don't have an account?
+							<a href="register.html">Register</a>
+						</p>
+					</div>
+				</form>
+			</section>
+		</main>
 	</body>
 </html>
