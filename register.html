@@ -21,7 +21,7 @@
 					<div class="form-group gap">
 						<input
 							type="text"
-							name="first-name"
+							name="first_name"
 							id="first-name"
 							required
 							autocomplete="given-name" />
@@ -30,7 +30,7 @@
 					<div class="form-group gap">
 						<input
 							type="text"
-							name="middle-name"
+							name="middle_name"
 							id="middle-name"
 							autocomplete="middle-name"
 							required />
@@ -39,7 +39,7 @@
 					<div class="form-group gap">
 						<input
 							type="text"
-							name="last-name"
+							name="last_name"
 							id="last-name"
 							autocomplete="family-name"
 							required />
@@ -92,7 +92,7 @@
 						>
 						<input
 							type="tel"
-							name="mobile-number"
+							name="mobile_number"
 							id="mobile-number"
 							autocomplete="tel"
 							pattern="09[0-9]{9}"
@@ -106,7 +106,7 @@
 						<p class="big-label">Address</p>
 						<input
 							type="text"
-							name="street-address"
+							name="street_address"
 							id="street-address"
 							required
 							autocomplete="street-address" />
@@ -132,7 +132,7 @@
 
 						<input
 							type="text"
-							name="zip-code"
+							name="zip_code"
 							id="zip-code"
 							autocomplete="postal-code"
 							required />
@@ -150,7 +150,7 @@
 						>
 						<input
 							type="number"
-							name="student-id"
+							name="student_id"
 							id="student-id"
 							placeholder="ex. 20251234"
 							minlength="8"
@@ -207,7 +207,7 @@
 						<label for="year-level" class="big-label"
 							>Year Level</label
 						>
-						<select name="year-level" id="year-level" required>
+						<select name="year_level" id="year-level" required>
 							<option value="" selected disabled>
 								-- Please Select
 							</option>
@@ -227,19 +227,11 @@
 							minlength="6"
 							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
 							required />
-					</div>
-
-					<div class="form-group gap">
-						<label for="confirm-password" class="big-label"
-							>Confirm Password</label
-						>
-						<input
-							type="text"
-							name="confirm-password"
-							id="confirm-password"
-							minlength="6"
-							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-							required />
+						<p class="password-info">
+							Password must contain at least 6 characters, at
+							least one uppercase letter, at least one lowercase
+							letter, and at least one number
+						</p>
 					</div>
 				</fieldset>
 
