@@ -68,19 +68,6 @@
 		grid-area: zip-code;
 	}
 }
-/* lg */
-@media (min-width: 64rem) {
-	.container {
-		max-width: 64rem;
-	}
-}
-
-/* xl */
-@media (min-width: 80rem) {
-	.container {
-		max-width: 64rem;
-	}
-}
 
 .description {
 	margin-bottom: 1em;
