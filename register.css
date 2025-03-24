@@ -137,6 +137,14 @@ input {
 	margin-bottom: 0;
 }
 
+.address-container > div {
+	margin-bottom: 0.8em;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
 .address {
 	display: flex;
 	flex-direction: column;
