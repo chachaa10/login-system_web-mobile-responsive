@@ -217,6 +217,7 @@ dialog#successDialog {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	will-change: opacity, transform;
 	margin: 0;
 	width: 70%;
 	max-width: 400px;
@@ -232,6 +233,8 @@ dialog {
 
 	&::backdrop {
 		background-color: rgba(0, 0, 0, 0.8);
+		min-height: 100vh;
+		min-height: 100dvh;
 	}
 }
 
