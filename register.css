@@ -219,7 +219,7 @@ dialog#successDialog {
 	transform: translate(-50%, -50%);
 	margin: 0;
 	width: 70%;
-	max-width: 300px;
+	max-width: 400px;
 }
 /* dialog */
 dialog {
@@ -258,5 +258,19 @@ dialog.showing {
 .dialog-message {
 	margin-bottom: 1em;
 	font-weight: 600;
-	font-size: clamp(0.6rem, 1vw + 0.6rem, 1.125rem);
+	font-size: clamp(1.125rem, 1vw + 1.125rem, 1.5rem);
+}
+
+@media screen and (width <= 375px) {
+	.dialog-message {
+		font-size: 18px;
+		text-align: center;
+	}
+}
+
+@media screen and (width <= 529px) {
+	.dialog-message {
+		font-size: 20px;
+		text-align: center;
+	}
 }
