@@ -110,7 +110,6 @@ form {
 input,
 select {
 	transition: all 0.1s ease;
-	width: 100%;
 	border: 2px solid #3f3f3f;
 	background-color: #ffffff;
 	padding-block: 3px;
