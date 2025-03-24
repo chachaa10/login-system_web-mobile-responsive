@@ -25,3 +25,12 @@ closeDialog.addEventListener("click", function () {
 	}, 300);
 });
 
+function capitalizeWords(str) {
+	return str.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+document.querySelectorAll("input[autocapitalize]").forEach((input) => {
+	input.addEventListener("blur", function () {
+		this.value = capitalizeWords(this.value);
+	});
+});
