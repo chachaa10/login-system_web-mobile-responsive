@@ -37,13 +37,37 @@
 		gap: 1rem;
 	}
 
-	.address-container {
+	.personal-information {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1rem;
 	}
-}
 
+	.address-container {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-areas:
+			"street-address street-address street-address"
+			"city state zip-code";
+		gap: 1rem;
+	}
+
+	.street-address {
+		grid-area: street-address;
+	}
+
+	.city {
+		grid-area: city;
+	}
+
+	.state {
+		grid-area: state;
+	}
+
+	.zip-code {
+		grid-area: zip-code;
+	}
+}
 /* lg */
 @media (min-width: 64rem) {
 	.container {

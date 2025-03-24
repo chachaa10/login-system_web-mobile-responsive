@@ -56,69 +56,71 @@
 						</div>
 					</div>
 
-					<div class="form-group gap">
-						<label for="birthdate" class="big-label required"
-							>Birth Date</label
-						>
-						<input
-							type="date"
-							name="birthdate"
-							id="birthdate"
-							autocomplete="bday"
-							class="date-input"
-							required />
-					</div>
-
-					<div class="form-group gender gap">
-						<label
-							for="gender"
-							class="big-label gender-label required"
-							>Gender</label
-						>
-						<select name="gender" id="gender">
-							<option value="" disabled selected>
-								-- Please Select
-							</option>
-							<option value="male">Male</option>
-							<option value="female">Female</option>
-							<option value="other">Prefer not to say</option>
-						</select>
-					</div>
-					<div class="form-group gap">
-						<label for="email" class="big-label required"
-							>Email Address</label
-						>
-						<input
-							type="email"
-							name="email"
-							id="email"
-							autocomplete="email"
-							pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-							placeholder="ex. myname@example.com"
-							required />
-					</div>
-
-					<div class="form-group gap">
-						<label for="mobile-number" class="big-label required"
-							>Mobile Number</label
-						>
-						<input
-							type="number"
-							inputmode="numeric"
-							name="mobile_number"
-							id="mobile-number"
-							autocomplete="tel"
-							pattern="09[0-9]{9}"
-							minlength="11"
-							maxlength="11"
-							placeholder="ex. 09xxxxxxxxx"
-							required />
+					<div class="personal-information">
+						<div class="form-group gap">
+							<label for="birthdate" class="big-label required"
+								>Birth Date</label
+							>
+							<input
+								type="date"
+								name="birthdate"
+								id="birthdate"
+								autocomplete="bday"
+								class="date-input"
+								required />
+						</div>
+						<div class="form-group gender gap">
+							<label
+								for="gender"
+								class="big-label gender-label required"
+								>Gender</label
+							>
+							<select name="gender" id="gender" class="gender">
+								<option value="" disabled selected>
+									-- Please Select
+								</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+								<option value="other">Prefer not to say</option>
+							</select>
+						</div>
+						<div class="form-group gap">
+							<label for="email" class="big-label required"
+								>Email Address</label
+							>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								autocomplete="email"
+								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+								placeholder="ex. myname@example.com"
+								required />
+						</div>
+						<div class="form-group gap">
+							<label
+								for="mobile-number"
+								class="big-label required"
+								>Mobile Number</label
+							>
+							<input
+								type="number"
+								inputmode="numeric"
+								name="mobile_number"
+								id="mobile-number"
+								autocomplete="tel"
+								pattern="09[0-9]{9}"
+								minlength="11"
+								maxlength="11"
+								placeholder="ex. 09xxxxxxxxx"
+								required />
+						</div>
 					</div>
 
 					<div class="form-group gap address">
 						<p class="big-label">Address</p>
 						<div class="address-container">
-							<div class="">
+							<div class="street-address">
 								<input
 									type="text"
 									name="street_address"
@@ -130,7 +132,7 @@
 									>Street Address</label
 								>
 							</div>
-							<div class="">
+							<div class="city">
 								<input
 									type="text"
 									name="city"
@@ -142,7 +144,7 @@
 									>City</label
 								>
 							</div>
-							<div class="">
+							<div class="state">
 								<input
 									type="text"
 									name="state"
@@ -154,7 +156,7 @@
 									>State / Province</label
 								>
 							</div>
-							<div class="">
+							<div class="zip">
 								<input
 									type="number"
 									inputmode="numeric"
