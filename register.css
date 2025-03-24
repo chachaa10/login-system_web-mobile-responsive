@@ -141,3 +141,13 @@ button {
 	font-weight: 500;
 	font-size: clamp(0.5rem, 1vw + 0.5rem, 0.85rem);
 }
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
