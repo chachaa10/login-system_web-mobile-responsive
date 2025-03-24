@@ -46,7 +46,6 @@
 	}
 }
 
-
 .description {
 	margin-bottom: 1em;
 	font-weight: 500;
@@ -136,4 +135,9 @@ button {
 	color: white;
 	font-weight: 600;
 	font-size: clamp(0.8rem, 1vw + 1rem, 1.125rem);
+}
+
+.password-info {
+	font-weight: 500;
+	font-size: clamp(0.5rem, 1vw + 0.5rem, 0.85rem);
 }
