@@ -30,6 +30,18 @@
 	.container {
 		max-width: 48rem;
 	}
+
+	.name-group {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.address-container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
 }
 
 /* lg */
@@ -150,4 +162,22 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+.form-group {
+	position: relative;
+	margin-bottom: 1.5rem;
+}
+
+label:not(.big-label) {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+}
+
+.required::after {
+	margin-left: 0.25rem;
+	content: "*";
+	color: #e3342f;
+	font-size: 1rem;
 }

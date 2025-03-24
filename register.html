@@ -18,36 +18,43 @@
 				<fieldset>
 					<legend class="information">Personal Information</legend>
 					<p class="big-label">Full Name</p>
-					<div class="form-group gap">
-						<input
-							type="text"
-							name="first_name"
-							id="first-name"
-							required
-							autocomplete="given-name" />
-						<label for="first-name">First Name</label>
-					</div>
-					<div class="form-group gap">
-						<input
-							type="text"
-							name="middle_name"
-							id="middle-name"
-							autocomplete="middle-name"
-							required />
-						<label for="middle-name">Middle Name</label>
-					</div>
-					<div class="form-group gap">
-						<input
-							type="text"
-							name="last_name"
-							id="last-name"
-							autocomplete="family-name"
-							required />
-						<label for="last-name">Last Name</label>
+					<div class="name-group">
+						<div class="form-group gap">
+							<input
+								type="text"
+								name="first_name"
+								id="first-name"
+								required
+								autocomplete="given-name" />
+							<label for="first-name " class="required"
+								>First Name</label
+							>
+						</div>
+						<div class="form-group gap">
+							<input
+								type="text"
+								name="middle_name"
+								id="middle-name"
+								autocomplete="additional-name" />
+							<label for="middle-name"
+								>Middle Name (Optional)</label
+							>
+						</div>
+						<div class="form-group gap">
+							<input
+								type="text"
+								name="last_name"
+								id="last-name"
+								autocomplete="family-name"
+								required />
+							<label for="last-name" class="required"
+								>Last Name</label
+							>
+						</div>
 					</div>
 
 					<div class="form-group gap">
-						<label for="birthdate" class="big-label"
+						<label for="birthdate" class="big-label required"
 							>Birth Date</label
 						>
 						<input
@@ -60,7 +67,9 @@
 					</div>
 
 					<div class="form-group gender gap">
-						<label for="gender" class="big-label gender-label"
+						<label
+							for="gender"
+							class="big-label gender-label required"
 							>Gender</label
 						>
 						<select name="gender" id="gender">
@@ -73,7 +82,7 @@
 						</select>
 					</div>
 					<div class="form-group gap">
-						<label for="email" class="big-label"
+						<label for="email" class="big-label required"
 							>Email Address</label
 						>
 						<input
@@ -87,11 +96,11 @@
 					</div>
 
 					<div class="form-group gap">
-						<label for="mobile-number" class="big-label"
+						<label for="mobile-number" class="big-label required"
 							>Mobile Number</label
 						>
 						<input
-							type="numeric"
+							type="number"
 							inputmode="numeric"
 							name="mobile_number"
 							id="mobile-number"
@@ -99,55 +108,66 @@
 							pattern="09[0-9]{9}"
 							minlength="11"
 							maxlength="11"
-							placeholder="09xxxxxxxxx"
+							placeholder="ex. 09xxxxxxxxx"
 							required />
 					</div>
 
 					<div class="form-group gap address">
 						<p class="big-label">Address</p>
-						<input
-							type="text"
-							name="street_address"
-							id="street-address"
-							required
-							autocomplete="street-address" />
-						<label for="street-address" class="gap"
-							>Street Address</label
-						>
-
-						<input
-							type="text"
-							name="city"
-							id="city"
-							required
-							autocomplete="address-level2" />
-						<label for="city" class="gap">City</label>
-
-						<input
-							type="text"
-							name="state"
-							id="state"
-							required
-							autocomplete="address-level1" />
-						<label for="state" class="gap">State / Province</label>
-
-						<input
-							type="number"
-							inputmode="numeric"
-							name="zip_code"
-							id="zip-code"
-							autocomplete="postal-code"
-							required />
-						<label for="zip-code" class="gap"
-							>Postal / Zip Code</label
-						>
+						<div class="address-container">
+							<div class="">
+								<input
+									type="text"
+									name="street_address"
+									id="street-address"
+									required
+									autocomplete="street-address" />
+								<label for="street-address" class="gap required"
+									>Street Address</label
+								>
+							</div>
+							<div class="">
+								<input
+									type="text"
+									name="city"
+									id="city"
+									required
+									autocomplete="address-level2" />
+								<label for="city" class="gap required"
+									>City</label
+								>
+							</div>
+							<div class="">
+								<input
+									type="text"
+									name="state"
+									id="state"
+									required
+									autocomplete="address-level1" />
+								<label for="state" class="gap required"
+									>State / Province</label
+								>
+							</div>
+							<div class="">
+								<input
+									type="number"
+									inputmode="numeric"
+									name="zip_code"
+									id="zip-code"
+									autocomplete="postal-code"
+									required />
+								<label for="zip-code" class="gap required"
+									>Postal / Zip Code</label
+								>
+							</div>
+						</div>
 					</div>
 				</fieldset>
 				<fieldset>
 					<legend>Student Information</legend>
 
 					<div class="form-group gap">
-						<label for="student-id" class="big-label"
+						<label for="student-id" class="big-label required"
 							>Student Number</label
 						>
 						<input
@@ -162,7 +182,7 @@
 					</div>
 
 					<div class="form-group gap">
-						<label for="course" class="big-label"
+						<label for="course" class="big-label required"
 							>Program / Major</label
 						>
 						<select name="course" id="course" required>
@@ -207,7 +227,7 @@
 					</div>
 
 					<div class="form-group gap">
-						<label for="year-level" class="big-label"
+						<label for="year-level" class="big-label required"
 							>Year Level</label
 						>
 						<select name="year_level" id="year-level" required>
@@ -222,23 +242,25 @@
 					</div>
 
 					<div class="form-group gap">
-						<label for="password" class="big-label">Password</label>
+						<label for="password" class="big-label required"
+							>Password</label
+						>
 						<input
 							type="text"
 							name="password"
 							id="password"
 							minlength="6"
 							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+							aria-describedby="password-requirements"
 							required />
-						<p class="password-info">
-							Password must contain at least 6 characters, at
-							least one uppercase letter, at least one lowercase
-							letter, and at least one number
+						<p class="password-info" id="password-requirements">
+							Password must contain at least: 6 characters, 1
+							uppercase, 1 lowercase, and 1 number
 						</p>
 					</div>
 				</fieldset>
 
-				<button type="#" class="button">Create an Account</button>
+				<button type="submit" class="button">Create an Account</button>
 			</form>
 		</main>
 	</body>
