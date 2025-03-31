@@ -4,41 +4,25 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Student Dashboard</title>
+		<link rel="stylesheet" href="./css/dashboard.css" />
+		<script src="./js/dashboard.js"></script>
 	</head>
 	<body>
-		<div id="studentList"></div>
-
-		<script>
-			// Fetch all students
-			async function loadStudents() {
-				const response = await fetch(
-					"http://localhost:3001/api/students"
-				);
-				const students = await response.json();
-
-				const studentList = document.getElementById("studentList");
-				studentList.innerHTML = students
-					.map(
-						(student) => `
-						<div>
-						${student.name} - ${student.email}
-						<button onclick="deleteStudent(${student.id})">Delete</button>
-						</div>
-					`
-					)
-					.join("");
-			}
-
-			// Delete student
-			async function deleteStudent(id) {
-				await fetch(`http://localhost:3001/api/students/${id}`, {
-					method: "DELETE",
-				});
-				loadStudents();
-			}
-
-			// Initial load
-			loadStudents();
-		</script>
+		<header>
+			<button id="logoutButton" class="logout-btn">Logout</button>
+		</header>
+		<div class="profile-section">
+			<h2>Your Profile</h2>
+			<div class="profile-info">
+				<p><strong>Name:</strong> <span id="studentName"></span></p>
+				<p><strong>Student ID:</strong> <span id="studentId"></span></p>
+				<p><strong>Email:</strong> <span id="studentEmail"></span></p>
+				<p><strong>Course:</strong> <span id="studentCourse"></span></p>
+				<p>
+					<strong>Year Level:</strong> <span id="studentYear"></span>
+				</p>
+				<p><strong>Mobile:</strong> <span id="studentMobile"></span></p>
+			</div>
+		</div>
 	</body>
 </html>

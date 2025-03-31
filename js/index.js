@@ -1,20 +1,37 @@
+// Redirect if already logged in
+if (sessionStorage.getItem("studentId")) {
+	window.location.href = "dashboard.html";
+}
+
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
 	e.preventDefault();
-
-	const response = await fetch("http://localhost:3001/api/students");
-	const students = await response.json();
 
 	const email = document.getElementById("email").value;
 	const password = document.getElementById("password").value;
 
-	const student = students.find(
-		(s) => s.email === email && s.password === password
-	);
+	try {
+		const response = await fetch(
+			"http://localhost:3001/api/students/login",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email, password }),
+			}
+		);
 
-	if (student) {
-		sessionStorage.setItem("studentId", student.id);
+		const data = await response.json();
+
+		if (!response.ok) {
+			throw new Error(data.error || "Login failed");
+		}
+
+		// Store user ID in session storage
+		sessionStorage.setItem("studentId", data.student.student_id);
 		window.location.href = "dashboard.html";
-	} else {
-		alert("Invalid credentials!");
+	} catch (error) {
+		console.error("Login error:", error);
+		alert(error.message);
 	}
 });

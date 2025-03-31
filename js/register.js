@@ -1,3 +1,8 @@
+// Redirect if already logged in
+if (sessionStorage.getItem("studentId")) {
+	window.location.href = "dashboard.html";
+}
+
 document.getElementById("myForm").addEventListener("submit", async (e) => {
 	e.preventDefault();
 
@@ -17,7 +22,9 @@ document.getElementById("myForm").addEventListener("submit", async (e) => {
 		if (!response.ok) throw new Error("Registration failed");
 
 		// Show success dialog
-		document.getElementById("successDialog").showModal();
+		const successDialog = document.getElementById("successDialog");
+		successDialog.showModal();
+		successDialog.classList.add("showing"); // Add the showing class
 		e.target.reset();
 	} catch (error) {
 		console.error("Error:", error);
@@ -27,7 +34,9 @@ document.getElementById("myForm").addEventListener("submit", async (e) => {
 
 // Close dialog handler
 document.getElementById("closeDialog").addEventListener("click", () => {
-	document.getElementById("successDialog").close();
+	const successDialog = document.getElementById("successDialog");
+	successDialog.classList.remove("showing"); //remove class showing before closing.
+	successDialog.close();
 	window.location.href = "index.html"; // Redirect to login
 });
 
