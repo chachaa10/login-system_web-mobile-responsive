@@ -222,7 +222,7 @@ dialog#successDialog {
 	width: 70%;
 	max-width: 400px;
 }
-/* dialog */
+
 dialog {
 	opacity: 0;
 	transition: opacity 0.3s ease, transform 0.3s ease;

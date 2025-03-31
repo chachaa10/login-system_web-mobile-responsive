@@ -1,28 +1,34 @@
-const form = document.getElementById("myForm");
-const dialog = document.getElementById("successDialog");
-const closeDialog = document.getElementById("closeDialog");
+document.getElementById("myForm").addEventListener("submit", async (e) => {
+	e.preventDefault();
 
-form.addEventListener("submit", async function (event) {
-	event.preventDefault();
-	const formData = new FormData(form);
+	// Get form data
+	const formData = new FormData(e.target);
+	const data = Object.fromEntries(formData.entries());
 
-	// Log form data to console
-	for (let [key, value] of formData.entries()) {
-		console.log(`${key}: ${value}`);
+	try {
+		const response = await fetch("http://localhost:3001/api/students", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		});
+
+		if (!response.ok) throw new Error("Registration failed");
+
+		// Show success dialog
+		document.getElementById("successDialog").showModal();
+		e.target.reset();
+	} catch (error) {
+		console.error("Error:", error);
+		alert("Registration failed. Please try again.");
 	}
-
-	// Log sending confirmation
-	console.log("Sending data...");
-
-	dialog.showModal();
-	dialog.classList.add("showing");
 });
 
-closeDialog.addEventListener("click", function () {
-	dialog.classList.remove("showing");
-	setTimeout(() => {
-		dialog.close();
-	}, 300);
+// Close dialog handler
+document.getElementById("closeDialog").addEventListener("click", () => {
+	document.getElementById("successDialog").close();
+	window.location.href = "index.html"; // Redirect to login
 });
 
 function capitalizeWords(str) {

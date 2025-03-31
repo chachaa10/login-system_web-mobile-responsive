@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Student Dashboard</title>
-</head>
-<body>
-	
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Student Dashboard</title>
+	</head>
+	<body>
+		<div id="studentList"></div>
+
+		<script>
+			// Fetch all students
+			async function loadStudents() {
+				const response = await fetch(
+					"http://localhost:3001/api/students"
+				);
+				const students = await response.json();
+
+				const studentList = document.getElementById("studentList");
+				studentList.innerHTML = students
+					.map(
+						(student) => `
+						<div>
+						${student.name} - ${student.email}
+						<button onclick="deleteStudent(${student.id})">Delete</button>
+						</div>
+					`
+					)
+					.join("");
+			}
+
+			// Delete student
+			async function deleteStudent(id) {
+				await fetch(`http://localhost:3001/api/students/${id}`, {
+					method: "DELETE",
+				});
+				loadStudents();
+			}
+
+			// Initial load
+			loadStudents();
+		</script>
+	</body>
 </html>
