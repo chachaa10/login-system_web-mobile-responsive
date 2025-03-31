@@ -27,18 +27,62 @@ document.addEventListener("DOMContentLoaded", () => {
 				course,
 				year_level,
 				mobile_number,
+				birthdate,
+				gender,
+				street_address,
+				city,
+				state,
+				zip_code,
 			} = await studentData.json();
 
 			// Populate data
 			document.getElementById(
-				"studentName"
+				"full-name"
 			).textContent = `${first_name} ${middle_name} ${last_name}`;
-			document.getElementById("studentId").textContent = student_id;
-			document.getElementById("studentEmail").textContent = email;
-			document.getElementById("studentCourse").textContent = course;
-			document.getElementById("studentYear").textContent = year_level;
-			document.getElementById("studentMobile").textContent =
+			document.getElementById("student-id").textContent = student_id;
+			document.getElementById("email").textContent = email;
+			document.getElementById("course").textContent =
+				course.toUpperCase();
+
+			// Add suffix to year level
+			const suffix =
+				year_level === 4
+					? "th"
+					: year_level === 3
+					? "rd"
+					: year_level === 2
+					? "nd"
+					: year_level === 1
+					? "st"
+					: "";
+			document.getElementById(
+				"year-level"
+			).textContent = `${year_level}${suffix}`;
+			document.getElementById("mobile-number").textContent =
 				mobile_number;
+
+			// Format birthdate
+			const birthdateObj = new Date(birthdate);
+			const formattedBirthdate = birthdateObj.toLocaleDateString(
+				"en-US",
+				{
+					month: "short",
+					day: "numeric",
+					year: "numeric",
+				}
+			);
+			document.getElementById("birthdate").textContent =
+				formattedBirthdate;
+
+			document.getElementById("gender").textContent =
+				gender.charAt(0).toUpperCase() + gender.slice(1);
+
+			// Populate address
+			document.getElementById("street-address").textContent =
+				street_address;
+			document.getElementById("city").textContent = city;
+			document.getElementById("state").textContent = state;
+			document.getElementById("zip-code").textContent = zip_code;
 
 			// Remove the hidden class after successful data loading
 			mainContent.classList.remove("hidden");
