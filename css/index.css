@@ -138,3 +138,7 @@ a:hover {
 	width: 20px;
 	height: auto;
 }
+
+.hidden {
+	display: none;
+}
