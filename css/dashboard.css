@@ -14,3 +14,7 @@
 .logout-btn:hover {
 	background: #bb2d3b;
 }
+
+.hidden {
+	display: none;
+}
