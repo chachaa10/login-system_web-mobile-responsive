@@ -13,26 +13,32 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Fetch student data
 	async function loadStudentData() {
 		try {
-			const response = await fetch(
+			const studentData = await fetch(
 				`http://localhost:3001/api/students/${studentId}`
 			);
-			if (!response.ok) throw new Error("Failed to load data");
+			if (!studentData.ok) throw new Error("Failed to load data");
 
-			const student = await response.json();
+			const {
+				first_name,
+				middle_name,
+				last_name,
+				student_id,
+				email,
+				course,
+				year_level,
+				mobile_number,
+			} = await studentData.json();
 
 			// Populate data
 			document.getElementById(
 				"studentName"
-			).textContent = `${student.first_name} ${student.middle_name} ${student.last_name}`;
-			document.getElementById("studentId").textContent =
-				student.student_id;
-			document.getElementById("studentEmail").textContent = student.email;
-			document.getElementById("studentCourse").textContent =
-				student.course;
-			document.getElementById("studentYear").textContent =
-				student.year_level;
+			).textContent = `${first_name} ${middle_name} ${last_name}`;
+			document.getElementById("studentId").textContent = student_id;
+			document.getElementById("studentEmail").textContent = email;
+			document.getElementById("studentCourse").textContent = course;
+			document.getElementById("studentYear").textContent = year_level;
 			document.getElementById("studentMobile").textContent =
-				student.mobile_number;
+				mobile_number;
 
 			// Remove the hidden class after successful data loading
 			mainContent.classList.remove("hidden");

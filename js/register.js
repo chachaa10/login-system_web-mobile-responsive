@@ -37,7 +37,8 @@ if (sessionStorage.getItem("studentId")) {
 	});
 
 	// Close dialog handler
-	document.getElementById("closeDialog").addEventListener("click", () => {
+	const closeDialog = document.getElementById("closeDialog");
+	closeDialog.addEventListener("click", () => {
 		const successDialog = document.getElementById("successDialog");
 		if (successDialog.classList.contains("showing")) {
 			successDialog.classList.remove("showing"); //remove class showing before closing.
