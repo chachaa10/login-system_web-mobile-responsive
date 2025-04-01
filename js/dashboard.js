@@ -41,8 +41,26 @@ document.addEventListener("DOMContentLoaded", () => {
 			).textContent = `${first_name} ${middle_name} ${last_name}`;
 			document.getElementById("student-id").textContent = student_id;
 			document.getElementById("email").textContent = email;
+
+			// Course
+			const courseMap = {
+				BSA: "Bachelor of Science in Accountancy",
+				BSIS: "Bachelor of Science in Information Systems",
+				BSAIS: "Bachelor of Science in Accounting Information System",
+				BSAT: "Bachelor of Science in Accounting Technology",
+				BSCE: "Bachelor of Science in Civil Engineering",
+				BSBA: "Bachelor of Science in Business Administration",
+				BSHRM: "Bachelor of Science in Hotel and Restaurant Management",
+				BSHM: "Bachelor of Science in Hospitality Management",
+				BAEL: "Bachelor of Arts in English Language",
+				BSPYSCH: "Bachelor of Science in Psychology",
+				BSCRIM: "Bachelor of Science in Criminology",
+				BEED: "Bachelor of Elementary Education",
+				BSED: "Bachelor of Secondary Education",
+				BPED: "Bachelor of Physical Education",
+			};
 			document.getElementById("course").textContent =
-				course.toUpperCase();
+				courseMap[course.toUpperCase()];
 
 			// Add suffix to year level
 			const suffix =
@@ -58,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			document.getElementById(
 				"year-level"
 			).textContent = `${year_level}${suffix}`;
+
 			document.getElementById("mobile-number").textContent =
 				mobile_number;
 
@@ -89,7 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		} catch (error) {
 			console.error("Error:", error);
 			alert("Failed to load student data");
+			sessionStorage.removeItem("studentId");
 			window.location.href = "login.html"; // Redirect on error also
+			return;
 		}
 	}
 
