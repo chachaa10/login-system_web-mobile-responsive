@@ -36,7 +36,13 @@ if (sessionStorage.getItem("studentId")) {
 			window.location.href = "dashboard.html";
 		} catch (error) {
 			console.error("Login error:", error);
-			alert(error.message);
+			// Display error message in the error container
+			document.getElementById("loginError").textContent =
+				"Invalid Email or Password";
+
+			setTimeout(() => {
+				document.getElementById("loginError").textContent = "";
+			}, 3000);
 		}
 	});
 }

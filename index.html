@@ -23,7 +23,6 @@
 							type="email"
 							name="email"
 							id="email"
-							pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
 							class="email-input"
 							autocomplete="email"
 							required />
@@ -41,15 +40,14 @@
 							type="password"
 							name="password"
 							id="password"
-							minlength="6"
-							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
 							class="password-input"
 							required />
 					</div>
+					<div id="loginError" class="error-message"></div>
 
 					<a href="#" class="forgot-pass">Forgot Password?</a>
 					<div class="buttons">
-						<button type="#">Login</button>
+						<button type="Submit">Login</button>
 						<p>
 							Don't have an account?
 							<a href="register.html">Register</a>
