@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			// Personal Information
 			document.getElementById(
 				"full-name"
-			).textContent = `${first_name} ${middle_name} ${last_name}`;
+			).textContent = `${last_name}, ${first_name} ${middle_name}`;
 			document.getElementById("email").textContent = email;
 			document.getElementById("gender").textContent =
 				gender.charAt(0).toUpperCase() + gender.slice(1);
@@ -59,6 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			);
 			document.getElementById("birthdate").textContent =
 				formattedBirthdate;
+
+			// Calculate age
+			const today = new Date();
+			const age = today.getFullYear() - birthdateObj.getFullYear();
+			document.getElementById("age").textContent = `${age} Years Old`;
 
 			// Address Information
 			document.getElementById("street-address").textContent =
