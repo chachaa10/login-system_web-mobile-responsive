@@ -1,20 +1,103 @@
-/* Add to dashboard.css */
-.logout-btn {
+.hidden {
+	display: none;
+}
+
+/* Center the content with a blue background */
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem 0;
+}
+
+/* Profile card container styling */
+.profile-section {
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+	border-radius: 12px;
+	background: #fff;
+	padding: 1rem 1.5rem;
+	width: min(90%, 60ch);
+}
+
+/* Main heading styling */
+.profile-section > h1 {
+	margin-bottom: 1.5rem;
+	color: #0230a8; /* Dark blue for contrast */
+	font-size: 1.75rem;
+	text-align: left;
+}
+
+/* Section headings styling */
+.profile-info h2 {
+	margin-bottom: 1rem;
+	border-bottom: 2px solid #e0e0e0;
+	padding-bottom: 0.5em;
+	color: #0230a8;
+	font-size: 1.5rem;
+}
+
+/* Single column layout for all sections */
+.profile-info {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+}
+
+/* Info blocks: personal, address, and student info */
+.personal-info,
+.address-info,
+.student-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+/* Styling for individual data rows */
+.flex-layout {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	border-bottom: 1px solid #f0f0f0;
+	padding: 0.4rem 0;
+}
+.flex-layout strong {
+	font-weight: 700;
+	font-size: 1.125rem;
+}
+
+.flex-layout span {
+	font-weight: 500;
+	text-align: right;
+}
+
+header {
 	position: absolute;
-	top: 20px;
-	right: 20px;
-	padding: 8px 16px;
-	background: #dc3545;
-	color: white;
-	border: none;
-	border-radius: 4px;
+	top: 0.5rem;
+	right: 0.5rem;
+}
+
+.logout-btn {
+	transition: background-color 0.3s ease;
 	cursor: pointer;
+	border: 2px solid #0230a8;
+	border-radius: 6px;
+	background-color: #fff;
+	padding: 0.5em 1em;
+	color: #0230a8;
+	font-size: clamp(0.6rem, 1vw + 0.6rem, 1.125rem);
 }
 
 .logout-btn:hover {
-	background: #bb2d3b;
+	background-color: #0230a8;
+	color: #fff;
 }
 
-.hidden {
-	display: none;
+@media screen and (max-width: 375px) {
+	.flex-layout {
+		flex-direction: column;
+	}
+
+	.flex-layout span {
+		text-align: left;
+	}
 }

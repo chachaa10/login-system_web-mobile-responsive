@@ -36,13 +36,40 @@ document.addEventListener("DOMContentLoaded", () => {
 			} = await studentData.json();
 
 			// Populate data
+			document.getElementById("username").textContent = `${first_name}`;
+
+			// Personal Information
 			document.getElementById(
 				"full-name"
 			).textContent = `${first_name} ${middle_name} ${last_name}`;
-			document.getElementById("student-id").textContent = student_id;
 			document.getElementById("email").textContent = email;
+			document.getElementById("gender").textContent =
+				gender.charAt(0).toUpperCase() + gender.slice(1);
+			document.getElementById("mobile-number").textContent =
+				mobile_number;
+			// Format birthdate
+			const birthdateObj = new Date(birthdate);
+			const formattedBirthdate = birthdateObj.toLocaleDateString(
+				"en-US",
+				{
+					month: "short",
+					day: "numeric",
+					year: "numeric",
+				}
+			);
+			document.getElementById("birthdate").textContent =
+				formattedBirthdate;
 
-			// Course
+			// Address Information
+			document.getElementById("street-address").textContent =
+				street_address;
+			document.getElementById("city").textContent = city;
+			document.getElementById("state").textContent = state;
+			document.getElementById("zip-code").textContent = zip_code;
+
+			// Student Information
+			document.getElementById("student-id").textContent = student_id;
+			// Add course name
 			const courseMap = {
 				BSA: "Bachelor of Science in Accountancy",
 				BSIS: "Bachelor of Science in Information Systems",
@@ -61,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			};
 			document.getElementById("course").textContent =
 				courseMap[course.toUpperCase()];
-
 			// Add suffix to year level
 			const suffix =
 				year_level === 4
@@ -75,33 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					: "";
 			document.getElementById(
 				"year-level"
-			).textContent = `${year_level}${suffix}`;
-
-			document.getElementById("mobile-number").textContent =
-				mobile_number;
-
-			// Format birthdate
-			const birthdateObj = new Date(birthdate);
-			const formattedBirthdate = birthdateObj.toLocaleDateString(
-				"en-US",
-				{
-					month: "short",
-					day: "numeric",
-					year: "numeric",
-				}
-			);
-			document.getElementById("birthdate").textContent =
-				formattedBirthdate;
-
-			document.getElementById("gender").textContent =
-				gender.charAt(0).toUpperCase() + gender.slice(1);
-
-			// Populate address
-			document.getElementById("street-address").textContent =
-				street_address;
-			document.getElementById("city").textContent = city;
-			document.getElementById("state").textContent = state;
-			document.getElementById("zip-code").textContent = zip_code;
+			).textContent = `${year_level}${suffix} Year`;
 
 			// Remove the hidden class after successful data loading
 			mainContent.classList.remove("hidden");

@@ -4,36 +4,74 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Student Dashboard</title>
+		<link rel="stylesheet" href="./css/default.css" />
 		<link rel="stylesheet" href="./css/dashboard.css" />
 	</head>
 	<body class="hidden" id="mainContent">
 		<header>
 			<button id="logoutButton" class="logout-btn">Logout</button>
 		</header>
-		<div class="profile-section">
-			<h2>Your Profile</h2>
+		<main class="profile-section">
+			<h1>Hi, <span id="username"></span>!</h1>
 			<div class="profile-info">
-				<p><strong>Name:</strong> <span id="full-name"></span></p>
-				<p>
-					<strong>Student ID:</strong> <span id="student-id"></span>
-				</p>
-				<p><strong>Email:</strong> <span id="email"></span></p>
-				<p><strong>Course:</strong> <span id="course"></span></p>
-				<p><strong>Gender:</strong> <span id="gender"></span></p>
-				<p>
-					<strong>Year Level:</strong> <span id="year-level"></span>
-				</p>
-				<p><strong>Mobile:</strong> <span id="mobile-number"></span></p>
-				<p><strong>Birthdate:</strong> <span id="birthdate"></span></p>
-				<p>
-					<strong>Street Address:</strong>
-					<span id="street-address"></span>
-				</p>
-				<p><strong>City:</strong> <span id="city"></span></p>
-				<p><strong>State:</strong> <span id="state"></span></p>
-				<p><strong>Zip Code:</strong> <span id="zip-code"></span></p>
+				<div class="personal-info">
+					<h2>Personal Information</h2>
+					<p class="flex-layout">
+						<strong>Name:</strong> <span id="full-name"></span>
+					</p>
+
+					<p class="flex-layout">
+						<strong>Email:</strong> <span id="email"></span>
+					</p>
+
+					<p class="flex-layout">
+						<strong>Gender:</strong> <span id="gender"></span>
+					</p>
+
+					<p class="flex-layout">
+						<strong>Mobile:</strong>
+						<span id="mobile-number"></span>
+					</p>
+
+					<p class="flex-layout">
+						<strong>Birthdate:</strong>
+						<span id="birthdate"></span>
+					</p>
+				</div>
+				<div class="address-info">
+					<h2>Address Information</h2>
+					<p class="flex-layout">
+						<strong>Street Address:</strong>
+						<span id="street-address"></span>
+					</p>
+					<p class="flex-layout">
+						<strong>City:</strong> <span id="city"></span>
+					</p>
+					<p class="flex-layout">
+						<strong>State:</strong> <span id="state"></span>
+					</p>
+					<p class="flex-layout">
+						<strong>Zip Code:</strong>
+						<span id="zip-code"></span>
+					</p>
+				</div>
+				<div class="student-info">
+					<h2>Student Information</h2>
+					<p class="flex-layout">
+						<strong>Student ID:</strong>
+						<span id="student-id"></span>
+					</p>
+					<p class="flex-layout">
+						<strong>Course:</strong> <span id="course"></span>
+					</p>
+					<p class="flex-layout">
+						<strong>Year Level:</strong>
+						<span id="year-level"></span>
+					</p>
+				</div>
 			</div>
-		</div>
+		</main>
+
 		<script src="./js/dashboard.js" defer></script>
 	</body>
 </html>
