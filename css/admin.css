@@ -1,0 +1,146 @@
+body {
+	background-image: var(--bg-color);
+	padding: 2rem;
+	min-height: 100vh;
+	color: #333;
+	line-height: 1.6;
+	font-family: var(--font-family);
+}
+
+.admin-container {
+	margin: 0 auto;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+	border-radius: 1rem;
+	background: rgba(255, 255, 255, 0.95);
+	padding: 2rem;
+	width: min(95%, 1200px);
+}
+h1 {
+	font-size: clamp(1.5rem, 2vw + 1.5rem, 2.5rem);
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.logout-btn {
+	transition: all 0.3s ease;
+	border: none;
+	border-radius: 0.5rem;
+	background-color: #0229a8;
+	padding: 0.5em 1em;
+	color: white;
+	font-weight: 600;
+	font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
+
+	&:hover {
+		cursor: pointer;
+		background-color: #011968;
+	}
+}
+
+.students-table {
+	margin-top: 1.5rem;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.students-table th,
+.students-table td {
+	border-bottom: 1px solid #ddd;
+	padding: 1rem;
+	text-align: left;
+}
+
+.students-table tr:nth-child(even) {
+	background-color: rgb(235, 235, 235);
+}
+
+.students-table th {
+	background-color: var(--primary-color);
+	color: white;
+}
+
+.action-buttons button {
+	transition: all 0.3s ease;
+	cursor: pointer;
+	margin: 0 0.25rem;
+	border: none;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+}
+
+.edit-btn,
+.delete-btn {
+	transition: all 0.3s ease;
+	cursor: pointer;
+	padding: 0.5em 1em;
+	color: white;
+	font-weight: 500;
+	font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
+}
+
+.edit-btn {
+	background-color: #4caf50;
+
+	&:hover {
+		background-color: #45a049;
+	}
+}
+
+.delete-btn {
+	background-color: #f44336;
+
+	&:hover {
+		background-color: #d32f2f;
+	}
+}
+
+.edit-modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+}
+
+.modal-content {
+	margin: 15% auto;
+	border-radius: 8px;
+	background-color: white;
+	padding: 2rem;
+	width: min(80%, 600px);
+}
+
+.form-group {
+	margin-bottom: 1rem;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 0.8rem;
+	width: 100%;
+}
+
+.modal-actions {
+	margin-top: 1.5rem;
+	text-align: right;
+}
+
+.save-btn {
+	background-color: var(--primary-color);
+	padding: 0.8rem 1.5rem;
+	color: white;
+}

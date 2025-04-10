@@ -1,48 +1,54 @@
-const body = document.getElementById("mainContent");
+document.addEventListener("DOMContentLoaded", () => {
+	const body = document.getElementById("mainContent");
+	const form = document.getElementById("loginForm");
+	const loginError = document.getElementById("loginError");
 
-// Redirect if already logged in
-if (sessionStorage.getItem("studentId")) {
-	window.location.href = "dashboard.html";
-} else {
+	if (sessionStorage.getItem("studentId")) {
+		window.location.href = "dashboard.html";
+		return;
+	}
+
+	if (sessionStorage.getItem("adminId")) {
+		window.location.href = "admin.html";
+		return;
+	}
+
+	// show form
 	body.classList.remove("hidden");
 
-	const loginForm = document.getElementById("loginForm");
-	loginForm.addEventListener("submit", async (e) => {
+	form.addEventListener("submit", async (e) => {
 		e.preventDefault();
+		loginError.textContent = "";
 
-		const email = document.getElementById("email").value;
+		const email = document.getElementById("email").value.trim();
 		const password = document.getElementById("password").value;
 
+		// Admin credentials
+		if (email === "admin@admin.com" && password === "Admin123") {
+			sessionStorage.setItem("adminId", "true");
+			return (window.location.href = "admin.html");
+		}
+
+		// Student login
 		try {
-			const response = await fetch(
+			const res = await fetch(
 				"http://localhost:3001/api/students/login",
 				{
 					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
+					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ email, password }),
 				}
 			);
+			const data = await res.json();
 
-			const data = await response.json();
+			if (!res.ok) throw new Error(data.error || "Login failed");
 
-			if (!response.ok) {
-				throw new Error(data.error || "Login failed");
-			}
-
-			// Store user ID in session storage
 			sessionStorage.setItem("studentId", data.student.student_id);
 			window.location.href = "dashboard.html";
-		} catch (error) {
-			console.error("Login error:", error);
-			// Display error message in the error container
-			document.getElementById("loginError").textContent =
-				"Invalid Email or Password";
-
-			setTimeout(() => {
-				document.getElementById("loginError").textContent = "";
-			}, 3000);
+		} catch (err) {
+			console.error("Login error:", err);
+			loginError.textContent = "Invalid Email or Password";
+			setTimeout(() => (loginError.textContent = ""), 3000);
 		}
 	});
-}
+});
