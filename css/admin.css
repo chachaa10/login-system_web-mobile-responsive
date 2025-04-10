@@ -71,16 +71,7 @@ h1 {
 	border: none;
 	border-radius: 5px;
 	padding: 0.5rem 1rem;
-}
-
-.edit-btn,
-.delete-btn {
-	transition: all 0.3s ease;
-	cursor: pointer;
-	padding: 0.5em 1em;
 	color: white;
-	font-weight: 500;
-	font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
 }
 
 .edit-btn {
@@ -99,50 +90,87 @@ h1 {
 	}
 }
 
-.edit-modal {
-	display: none;
+.modal {
 	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 100%;
-	height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	border: 2px solid black;
+	border-radius: 1.5rem;
+	background-color: #fff;
+	padding: 1.25rem;
+	width: 90%;
+	max-width: 400px;
+
+	.modal-buttons {
+		display: flex;
+		justify-content: flex-end;
+		gap: 0.5em;
+		margin-top: 1rem;
+
+		.cancel-button {
+			transition: all 0.3s ease;
+			cursor: pointer;
+			border: none;
+			border-radius: 0.5rem;
+			background-color: #f44336;
+			padding: 0.5em 1em;
+			color: white;
+			font-weight: 500;
+			font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
+
+			&:hover {
+				cursor: pointer;
+				background-color: #d32f2f;
+			}
+		}
+
+		.delete-button {
+			transition: all 0.3s ease;
+			cursor: pointer;
+			border: none;
+			border-radius: 0.5rem;
+			background-color: #4caf50;
+			padding: 0.5em 1em;
+			color: white;
+			font-weight: 500;
+			font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
+
+			&:hover {
+				cursor: pointer;
+				background-color: #45a049;
+			}
+		}
+	}
 }
 
-.modal-content {
-	margin: 15% auto;
-	border-radius: 8px;
-	background-color: white;
-	padding: 2rem;
-	width: min(80%, 600px);
+/* Open state of the dialog  */
+dialog:open {
+	opacity: 1;
 }
 
-.form-group {
-	margin-bottom: 1rem;
+dialog:open::backdrop {
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
-.form-group label {
-	display: block;
-	margin-bottom: 0.5rem;
+@starting-style {
+	dialog:open {
+		opacity: 0;
+	}
+	dialog:open::backdrop {
+		background-color: rgba(0, 0, 0, 0);
+	}
 }
 
-.form-group input,
-.form-group select {
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	padding: 0.8rem;
-	width: 100%;
+dialog::backdrop {
+	transition: all 0.75s allow-discrete;
 }
 
-.modal-actions {
-	margin-top: 1.5rem;
-	text-align: right;
-}
-
-.save-btn {
-	background-color: var(--primary-color);
-	padding: 0.8rem 1.5rem;
-	color: white;
+/* Closed state of the dialog   */
+dialog {
+	opacity: 0;
+	transition: all 0.75s allow-discrete;
 }
 
 .hidden {

@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${course.toUpperCase()}</td>
                     <td>Year ${year_level}</td>
                     <td class="action-buttons">
-                        <button class="edit-btn" onclick="openEditModal(${student_id})">Edit</button>
-                        <button class="delete-btn" onclick="deleteStudent(${student_id})">Delete</button>
+                        <button class="edit-btn" id="editButton" data-student-id="${student_id}">Edit</button>
+                        <button class="delete-btn" id="openDeleteModal" data-student-id="${student_id}">Delete</button>
                     </td>
                 </tr>
             `
@@ -46,6 +46,39 @@ document.addEventListener("DOMContentLoaded", () => {
 				.join("");
 
 			body.classList.remove("hidden");
+
+			const deleteButton = document.getElementById("openDeleteModal");
+			const deleteModal = document.getElementById("deleteModal");
+			deleteButton.addEventListener("click", () => {
+				deleteModal.showModal();
+				const cancelButton = document.getElementById("cancelDelete");
+
+				cancelButton.addEventListener("click", () => {
+					deleteModal.close();
+				});
+
+				const studentId = deleteButton.getAttribute("data-student-id");
+
+				const confirmButton = document.getElementById("confirmDelete");
+				confirmButton.addEventListener("click", async () => {
+					try {
+						const response = await fetch(
+							`http://localhost:3001/api/students/${studentId}`,
+							{
+								method: "DELETE",
+							}
+						);
+						if (!response.ok) {
+							throw new Error("Failed to delete student");
+						}
+						deleteModal.close();
+						loadStudents();
+					} catch (error) {
+						console.error("Error:", error);
+						alert("Failed to delete student");
+					}
+				});
+			});
 		} catch (error) {
 			console.error("Error:", error);
 			alert("Failed to load student data");
@@ -53,31 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 	}
-
-	// Modal handling
-	function openEditModal(studentId) {
-		const student = student.find((s) => s.id === studentId);
-		if (student) {
-			document.getElementById("editName").value = student.name;
-			document.getElementById("editEmail").value = student.email;
-			document.getElementById("editCourse").value = student.course;
-			document.getElementById("editYear").value = student.year_level;
-			document.getElementById("editModal").style.display = "block";
-		}
-	}
-
-	function closeEditModal() {
-		document.getElementById("editModal").style.display = "none";
-	}
-
-	// Event listeners
-	document
-		.querySelector(".cancel-btn")
-		.addEventListener("click", closeEditModal);
-	document.querySelector(".save-btn").addEventListener("click", () => {
-		// Handle save logic here
-		closeEditModal();
-	});
 
 	// Initial render
 	loadStudents();

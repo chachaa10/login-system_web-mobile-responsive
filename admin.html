@@ -28,49 +28,20 @@
 				<tbody id="studentsList"></tbody>
 			</table>
 
-			<div id="editModal" class="edit-modal">
+			<dialog id="deleteModal" class="modal">
 				<div class="modal-content">
-					<h2>Edit Student Details</h2>
-					<form id="editForm">
-						<div class="form-group">
-							<label for="editName">Full Name</label>
-							<input type="text" id="editName" required />
-						</div>
-						<div class="form-group">
-							<label for="editEmail">Email</label>
-							<input type="email" id="editEmail" required />
-						</div>
-						<div class="form-group">
-							<label for="editCourse">Course</label>
-							<select id="editCourse" required>
-								<option value="bsit">
-									BS Information Technology
-								</option>
-								<option value="bscs">
-									BS Computer Science
-								</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="editYear">Year Level</label>
-							<select id="editYear" required>
-								<option value="1">1st Year</option>
-								<option value="2">2nd Year</option>
-								<option value="3">3rd Year</option>
-								<option value="4">4th Year</option>
-							</select>
-						</div>
-						<div class="modal-actions">
-							<button type="button" class="save-btn">
-								Save Changes
-							</button>
-							<button type="button" class="cancel-btn">
-								Cancel
-							</button>
-						</div>
-					</form>
+					<h2>Confirm Deletion</h2>
+					<p>Are you sure you want to delete this student?</p>
+					<div class="modal-buttons">
+						<button class="cancel-button" id="cancelDelete" autofocus>
+							Cancel
+						</button>
+						<button class="delete-button" id="confirmDelete">
+							Delete
+						</button>
+					</div>
 				</div>
-			</div>
+			</dialog>
 		</div>
 
 		<script src="js/admin.js" defer></script>
