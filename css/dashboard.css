@@ -103,3 +103,9 @@ header {
 		text-wrap: pretty;
 	}
 }
+
+@media screen and (max-width: 320px) {
+	.logout-btn {
+		font-size: 0.8rem;
+	}
+}
