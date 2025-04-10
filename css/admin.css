@@ -62,7 +62,12 @@ h1 {
 .students-table td {
 	border-bottom: 1px solid #ddd;
 	padding: 1rem;
+	color: #08153d;
 	text-align: left;
+}
+
+.students-table td:first-child {
+	color: black;
 }
 
 .students-table tr:nth-child(even) {
