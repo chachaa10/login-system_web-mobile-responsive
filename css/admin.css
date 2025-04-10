@@ -176,3 +176,8 @@ dialog {
 .hidden {
 	display: none;
 }
+
+.no-data {
+	font-weight: 600;
+	font-size: 1.5rem;
+}

@@ -1,97 +1,94 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// Get logged-in admin's ID from session storage
 	const adminId = sessionStorage.getItem("adminId");
-
-	// Redirect to login if no session
 	if (!adminId) {
-		window.location.href = "login.html";
-		return; // Important: Stop further execution
+		location.href = "login.html";
+		return;
 	}
 
 	const body = document.getElementById("mainContent");
+	const tbody = document.getElementById("studentsList");
 
 	async function loadStudents() {
-		try {
-			const studentData = await fetch(
-				"http://localhost:3001/api/students"
-			);
-			if (!studentData.ok) throw new Error("Failed to load data");
-			const students = await studentData.json();
+		const res = await fetch("http://localhost:3001/api/students");
+		const students = res.ok ? await res.json() : [];
 
-			const tbody = document.getElementById("studentsList");
-			tbody.innerHTML = students
-				.map(
-					({
-						student_id,
-						first_name,
-						middle_name,
-						last_name,
-						email,
-						course,
-						year_level,
-					}) => `
-                <tr>
-                    <td><strong>${student_id}</strong></td>
-                    <td>${last_name}, ${first_name} ${middle_name}</td>
-                    <td>${email}</td>
-                    <td>${course.toUpperCase()}</td>
-                    <td>Year ${year_level}</td>
-                    <td class="action-buttons">
-                        <button class="edit-btn" id="editButton" data-student-id="${student_id}">Edit</button>
-                        <button class="delete-btn" id="openDeleteModal" data-student-id="${student_id}">Delete</button>
-                    </td>
-                </tr>
-            `
-				)
-				.join("");
-
+		if (!students.length) {
+			tbody.innerHTML = `
+        <tr>
+          <td colspan="6" style="text-align:center" class="no-data">No data</td>
+        </tr>
+      `;
 			body.classList.remove("hidden");
-
-			const deleteButton = document.getElementById("openDeleteModal");
-			const deleteModal = document.getElementById("deleteModal");
-			deleteButton.addEventListener("click", () => {
-				deleteModal.showModal();
-				const cancelButton = document.getElementById("cancelDelete");
-
-				cancelButton.addEventListener("click", () => {
-					deleteModal.close();
-				});
-
-				const studentId = deleteButton.getAttribute("data-student-id");
-
-				const confirmButton = document.getElementById("confirmDelete");
-				confirmButton.addEventListener("click", async () => {
-					try {
-						const response = await fetch(
-							`http://localhost:3001/api/students/${studentId}`,
-							{
-								method: "DELETE",
-							}
-						);
-						if (!response.ok) {
-							throw new Error("Failed to delete student");
-						}
-						deleteModal.close();
-						loadStudents();
-					} catch (error) {
-						console.error("Error:", error);
-						alert("Failed to delete student");
-					}
-				});
-			});
-		} catch (error) {
-			console.error("Error:", error);
-			alert("Failed to load student data");
-			// window.location.href = "login.html"; // Redirect on error also
 			return;
 		}
+
+		tbody.innerHTML = students
+			.map((s) => {
+				const student_id = s.student_id ?? "No data";
+				const first_name = s.first_name ?? "No data";
+				const middle_name = s.middle_name ?? "";
+				const last_name = s.last_name ?? "No data";
+				const email = s.email ?? "No data";
+				const course = s.course ? s.course.toUpperCase() : "No data";
+				const year_level =
+					s.year_level === 4
+						? "4th Year"
+						: s.year_level === 3
+						? "3rd Year"
+						: s.year_level === 2
+						? "2nd Year"
+						: s.year_level === 1
+						? "1st Year"
+						: "No data";
+				return `
+          <tr>
+            <td><strong>${student_id}</strong></td>
+            <td>${last_name}, ${first_name} ${
+					middle_name ? " " + middle_name : ""
+				}</td>
+            <td>${email}</td>
+            <td>${course}</td>
+            <td>${year_level}</td>
+            <td class="action-buttons">
+              <button class="edit-btn"   data-student-id="${student_id}">Edit</button>
+              <button class="delete-btn" data-student-id="${student_id}">Delete</button>
+            </td>
+          </tr>
+        `;
+			})
+			.join("");
+
+		body.classList.remove("hidden");
 	}
 
-	// Initial render
-	loadStudents();
+	// delegate delete clicks
+	tbody.addEventListener("click", (e) => {
+		if (!e.target.classList.contains("delete-btn")) return;
+		const studentId = e.target.dataset.studentId;
+		const deleteModal = document.getElementById("deleteModal");
+		deleteModal.showModal();
+
+		document.getElementById("cancelDelete").onclick = () => {
+			deleteModal.close();
+		};
+		document.getElementById("confirmDelete").onclick = async () => {
+			const resp = await fetch(
+				`http://localhost:3001/api/students/${studentId}`,
+				{ method: "DELETE" }
+			);
+			if (resp.ok) {
+				deleteModal.close();
+				loadStudents();
+			} else {
+				console.error("Delete failed", resp.status);
+			}
+		};
+	});
 
 	document.getElementById("logoutButton").addEventListener("click", () => {
 		sessionStorage.removeItem("adminId");
-		window.location.href = "login.html";
+		location.href = "login.html";
 	});
+
+	loadStudents();
 });
