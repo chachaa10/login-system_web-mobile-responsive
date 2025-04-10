@@ -59,6 +59,8 @@ input:focus {
 .forgot-pass {
 	margin-top: 0.5em;
 	margin-bottom: 0.8em;
+	margin-left: auto;
+	width: fit-content;
 	font-weight: 500;
 	font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
 	text-align: right;
@@ -72,7 +74,7 @@ input:focus {
 }
 
 button {
-	transition: all 0.3s ease;
+	transition: all 0.1s ease;
 	cursor: pointer;
 	border: none;
 	border-radius: 1rem;
@@ -85,6 +87,11 @@ button {
 
 button:hover {
 	background: rgb(2, 25, 100);
+}
+
+button:focus {
+	outline: none;
+	border: 1px solid rgb(0, 16, 68);
 }
 
 p {
@@ -144,10 +151,17 @@ a:hover {
 }
 
 .error-message {
-	color: red;
-	font-size: 0.9rem;
 	margin-top: 0.5em;
+	color: red;
 	font-weight: 600;
-	text-align: center;
+	font-size: 0.9rem;
 	font-size: clamp(0.5rem, 2vw + 0.5rem, 1.125rem);
+	text-align: center;
+}
+
+.forgot-pass:focus,
+.register:focus {
+	outline: none;
+	color: var(--primary-color);
+	text-decoration: underline;
 }
