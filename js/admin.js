@@ -126,6 +126,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 	});
 
+	tbody.addEventListener("click", (e) => {
+		if (!e.target.classList.contains("edit-btn")) return;
+		const editModal = document.getElementById("editModal");
+		editModal.showModal();
+
+		document.getElementById("closeEditModal").onclick = () => {
+			editModal.close();
+		};
+	});
+
 	document.getElementById("logoutButton").addEventListener("click", () => {
 		sessionStorage.removeItem("adminId");
 		location.href = "login.html";

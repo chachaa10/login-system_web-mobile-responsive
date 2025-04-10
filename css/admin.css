@@ -196,3 +196,99 @@ dialog {
 	font-weight: 600;
 	font-size: 1.5rem;
 }
+
+.edit-modal {
+	border-radius: 10px;
+	max-height: 90vh;
+	overflow-y: auto;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+fieldset {
+	margin-bottom: 10px;
+	border: 3px solid rgb(10, 10, 173);
+	border-radius: 5px;
+	padding: 0.5em 0.5em;
+}
+form legend {
+	padding: 0 0.5em;
+	font-weight: 700;
+	font-size: clamp(0.8rem, 1vw + 0.8rem, 1.125rem);
+}
+form label {
+	font-weight: 500;
+	font-size: clamp(0.8rem, 1vw + 0.8rem, 1rem);
+}
+
+form input,
+form select {
+	transition: all 0.1s ease;
+	margin-bottom: 5px;
+	border: 1px solid #0229a8;
+	border-radius: 5px;
+	background-color: rgb(243, 243, 243);
+	padding: 0.5em 1em;
+	width: 100%;
+
+	&:focus,
+	&:active {
+		outline: none;
+		box-shadow: 0 0 5px var(--primary-color);
+		border: 1px solid var(--primary-color);
+	}
+}
+
+form legend,
+form label {
+	color: #042181;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.edit-modal__buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.5em;
+	margin-top: 1rem;
+}
+
+.close-edit-modal {
+	transition: all 0.3s ease;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5rem;
+	background-color: var(--primary-color);
+	padding: 0.5em 1em;
+	color: white;
+	font-weight: 500;
+	font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
+
+	&:hover {
+		cursor: pointer;
+		background-color: #001869;
+	}
+}
+
+.save-edit-modal {
+	transition: all 0.3s ease;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5rem;
+	background-color: green;
+	padding: 0.5em 1em;
+	color: white;
+	font-weight: 500;
+	font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
+
+	&:hover {
+		cursor: pointer;
+		background-color: rgb(1, 104, 1);
+	}
+}
