@@ -113,20 +113,20 @@ document.addEventListener("DOMContentLoaded", () => {
 			deleteModal.close();
 		};
 		document.getElementById("confirmDelete").onclick = async () => {
-			const resp = await fetch(
+			const studentData = await fetch(
 				`http://localhost:3001/api/students/${studentId}`,
 				{ method: "DELETE" }
 			);
-			if (resp.ok) {
+			if (studentData.ok) {
 				deleteModal.close();
 				loadStudents();
 			} else {
-				console.error("Delete failed", resp.status);
+				console.error("Delete failed", studentData.status);
 			}
 		};
 	});
 
-	tbody.addEventListener("click", (e) => {
+	tbody.addEventListener("click", async (e) => {
 		if (!e.target.classList.contains("edit-btn")) return;
 		const editModal = document.getElementById("editModal");
 		editModal.showModal();
@@ -134,6 +134,59 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.getElementById("closeEditModal").onclick = () => {
 			editModal.close();
 		};
+
+		const studentId = e.target.dataset.studentId;
+
+		try {
+			// Fetch student data
+			const response = await fetch(
+				`http://localhost:3001/api/students/${studentId}`
+			);
+			if (!response.ok) throw new Error("Failed to fetch student data");
+
+			const {
+				first_name,
+				middle_name,
+				last_name,
+				email,
+				street_address,
+				city,
+				state,
+				zip_code,
+				student_id,
+				course,
+				year_level,
+				birthdate,
+				mobile_number,
+			} = await response.json();
+
+			// Populate form fields
+			document.getElementById("editFirstName").value = first_name;
+			document.getElementById("editMiddleName").value = middle_name || "";
+			document.getElementById("editLastName").value = last_name;
+			document.getElementById("editEmail").value = email;
+			document.getElementById("editStreetAddress").value = street_address;
+			document.getElementById("editCity").value = city;
+			document.getElementById("editState").value = state;
+			document.getElementById("editZipCode").value = zip_code;
+
+			// Convert birthdate to YYYY-MM-DD format
+			const birthdateObj = new Date(birthdate);
+			const birthdateISO = birthdateObj.toISOString().split("T")[0];
+			document.getElementById("editBirthdate").value = birthdateISO;
+			document.getElementById("editStudentID").value = student_id;
+			document.getElementById("course").value = course;
+			document.getElementById("editYearLevel").value = year_level;
+			document.getElementById("editMobileNumber").value = mobile_number;
+
+			editModal.showModal();
+		} catch (error) {
+			console.error("Error loading student data:", error);
+			// Show error message
+			document.getElementById("editModalError").textContent =
+				"Failed to load student data";
+			editModal.showModal();
+		}
 	});
 
 	document.getElementById("logoutButton").addEventListener("click", () => {

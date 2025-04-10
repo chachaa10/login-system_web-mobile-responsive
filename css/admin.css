@@ -115,8 +115,6 @@ h1 {
 	border-radius: 1.5rem;
 	background-color: #fff;
 	padding: 1.25rem;
-	width: 90%;
-	max-width: 400px;
 
 	.modal-buttons {
 		display: flex;
@@ -158,6 +156,14 @@ h1 {
 			}
 		}
 	}
+}
+
+.edit-modal {
+	width: min(90%, 60ch);
+}
+
+.delete-modal {
+	width: min(90%, 40ch);
 }
 
 /* Open state of the dialog  */
@@ -239,6 +245,7 @@ form select {
 		outline: none;
 		box-shadow: 0 0 5px var(--primary-color);
 		border: 1px solid var(--primary-color);
+		background-color: white;
 	}
 }
 
@@ -252,12 +259,6 @@ form label {
 	flex-direction: column;
 }
 
-.edit-modal__buttons {
-	display: flex;
-	justify-content: flex-end;
-	gap: 0.5em;
-	margin-top: 1rem;
-}
 
 .close-edit-modal {
 	transition: all 0.3s ease;
