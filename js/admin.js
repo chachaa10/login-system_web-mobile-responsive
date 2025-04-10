@@ -61,6 +61,46 @@ document.addEventListener("DOMContentLoaded", () => {
 		body.classList.remove("hidden");
 	}
 
+	// Search Filter
+	const searchInput = document.getElementById("searchInput");
+	searchInput.addEventListener("input", () => {
+		const term = searchInput.value.trim().toLowerCase();
+		// remove any old “no-data” row
+		const old = tbody.querySelector(".no-data");
+		if (old) old.remove();
+
+		const rows = tbody.querySelectorAll("tr");
+		// if empty search → show all rows
+		if (!term) {
+			rows.forEach((r) => (r.style.display = ""));
+			return;
+		}
+
+		let anyVisible = false;
+		rows.forEach((row) => {
+			const text = row.textContent.toLowerCase();
+			if (text.includes(term)) {
+				row.style.display = "";
+				anyVisible = true;
+			} else {
+				row.style.display = "none";
+			}
+		});
+
+		if (!anyVisible) {
+			tbody.insertAdjacentHTML(
+				"beforeend",
+				`
+				<tr>
+					<td colspan="6" class="no-data" style="text-align:center">
+					No matching records
+					</td>
+				</tr>
+				`
+			);
+		}
+	});
+
 	// delegate delete clicks
 	tbody.addEventListener("click", (e) => {
 		if (!e.target.classList.contains("delete-btn")) return;

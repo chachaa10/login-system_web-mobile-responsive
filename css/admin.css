@@ -26,6 +26,16 @@ h1 {
 	margin-bottom: 2rem;
 }
 
+.search-input {
+	transition: all 0.3s ease;
+	border: 2px solid #0229a8;
+	border-radius: 0.5rem;
+	background-color: #f2f2f2;
+	padding: 0.5em 1em;
+	color: #333;
+	font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
+}
+
 .logout-btn {
 	transition: all 0.3s ease;
 	border: none;
