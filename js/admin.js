@@ -62,15 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	// Search Filter
-	const searchInput = document.getElementById("searchInput");
 	searchInput.addEventListener("input", () => {
 		const term = searchInput.value.trim().toLowerCase();
-		// remove any old “no-data” row
+		const keywords = term.split(/\s+/); // split by space
+
 		const old = tbody.querySelector(".no-data");
 		if (old) old.remove();
 
 		const rows = tbody.querySelectorAll("tr");
-		// if empty search → show all rows
 		if (!term) {
 			rows.forEach((r) => (r.style.display = ""));
 			return;
@@ -79,7 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		let anyVisible = false;
 		rows.forEach((row) => {
 			const text = row.textContent.toLowerCase();
-			if (text.includes(term)) {
+			const matchesAll = keywords.every((kw) => text.includes(kw));
+
+			if (matchesAll) {
 				row.style.display = "";
 				anyVisible = true;
 			} else {
@@ -91,12 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			tbody.insertAdjacentHTML(
 				"beforeend",
 				`
-				<tr>
-					<td colspan="6" class="no-data" style="text-align:center">
-					No matching records
-					</td>
-				</tr>
-				`
+      <tr>
+        <td colspan="6" class="no-data" style="text-align:center">
+          No matching records
+        </td>
+      </tr>
+    `
 			);
 		}
 	});
