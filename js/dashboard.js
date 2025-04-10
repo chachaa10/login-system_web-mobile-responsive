@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				BSHRM: "Bachelor of Science in Hotel and Restaurant Management",
 				BSHM: "Bachelor of Science in Hospitality Management",
 				BAEL: "Bachelor of Arts in English Language",
-				BSPYSCH: "Bachelor of Science in Psychology",
+				BSPSYCH: "Bachelor of Science in Psychology",
 				BSCRIM: "Bachelor of Science in Criminology",
 				BEED: "Bachelor of Elementary Education",
 				BSED: "Bachelor of Secondary Education",
