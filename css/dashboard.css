@@ -77,18 +77,19 @@ header {
 }
 
 .logout-btn {
-	transition: background-color 0.3s ease;
+	transition: all 0.3s ease;
 	cursor: pointer;
-	border: 2px solid #0230a8;
-	border-radius: 6px;
-	background-color: #fff;
+	border: 0.5px solid hsl(226, 92%, 34%);
+	border-radius: 8px;
+	background: hsl(226, 80%, 48%);
 	padding: 0.5em 1em;
-	color: #0230a8;
-	font-size: clamp(0.6rem, 1vw + 0.6rem, 1.125rem);
+	color: white;
+	font-weight: 500;
+	font-size: clamp(0.75rem, 1vw + 0.75rem, 1.125rem);
 }
 
 .logout-btn:hover {
-	background-color: #0230a8;
+	background-color: hsl(226, 95%, 42%);
 	color: #fff;
 }
 
