@@ -92,12 +92,13 @@ header {
 	color: #fff;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 425px) {
 	.flex-layout {
 		flex-direction: column;
 	}
 
 	.flex-layout span {
 		text-align: left;
+		text-wrap: pretty;
 	}
 }
