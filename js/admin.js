@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		return; // Important: Stop further execution
 	}
 
-	const mainContent = document.getElementById("mainContent");
+	const body = document.getElementById("mainContent");
 
 	async function loadStudents() {
 		try {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				)
 				.join("");
 
-			mainContent.classList.remove("hidden");
+			body.classList.remove("hidden");
 		} catch (error) {
 			console.error("Error:", error);
 			alert("Failed to load student data");
