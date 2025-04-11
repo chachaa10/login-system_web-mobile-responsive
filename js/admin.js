@@ -212,107 +212,129 @@ document.addEventListener("DOMContentLoaded", () => {
 		const birthdateErrMsg = document.getElementById("birthdateError");
 
 		let countError = 0;
-		if (!payload.first_name) {
-			firstNameErrMsg.textContent = "First name is required";
-			countError++;
-		} else if (
-			!payload.first_name.length > 3 ||
-			!payload.first_name.match(/^[A-Za-z\s]+$/)
-		) {
-			firstNameErrMsg.textContent =
-				"First name must be at least 3 characters and contain only letters and spaces";
-			countError++;
-		}
+		function isValidForm() {
+			if (!payload.first_name) {
+				firstNameErrMsg.textContent = "First name is required";
+				countError++;
+			} else if (
+				!payload.first_name.length > 3 ||
+				!payload.first_name.match(/^[A-Za-z\s]+$/)
+			) {
+				firstNameErrMsg.textContent =
+					"First name must be at least 3 characters and contain only letters and spaces";
+				countError++;
+			}
 
-		if (!payload.last_name) {
-			lastNameErrMsg.textContent = "Last name is required";
-			countError++;
-		} else if (
-			!payload.last_name.length > 3 ||
-			!payload.last_name.match(/^[A-Za-z\s]+$/)
-		) {
-			lastNameErrMsg.textContent =
-				"Last name must be at least 3 characters and contain only letters and spaces";
-			countError++;
-		}
+			if (!payload.last_name) {
+				lastNameErrMsg.textContent = "Last name is required";
+				countError++;
+			} else if (
+				!payload.last_name.length > 3 ||
+				!payload.last_name.match(/^[A-Za-z\s]+$/)
+			) {
+				lastNameErrMsg.textContent =
+					"Last name must be at least 3 characters and contain only letters and spaces";
+				countError++;
+			}
 
-		if (!payload.email) {
-			emailErrMsg.textContent = "Email is required";
-			countError++;
-		} else if (
-			!payload.email.match(
-				/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-			)
-		) {
-			emailErrMsg.textContent = "Invalid email format";
-			countError++;
-		}
+			if (!payload.email) {
+				emailErrMsg.textContent = "Email is required";
+				countError++;
+			} else if (
+				!payload.email.match(
+					/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+				)
+			) {
+				emailErrMsg.textContent = "Invalid email format";
+				countError++;
+			}
 
-		if (!payload.birthdate) {
-			birthdateErrMsg.textContent = "Birthdate is required";
-			countError++;
-		} else if (!payload.birthdate.match(/^\d{4}-\d{2}-\d{2}$/)) {
-			birthdateErrMsg.textContent = "Invalid birthdate format";
-			countError++;
-		}
+			if (!payload.birthdate) {
+				birthdateErrMsg.textContent = "Birthdate is required";
+				countError++;
+			} else if (!payload.birthdate.match(/^\d{4}-\d{2}-\d{2}$/)) {
+				birthdateErrMsg.textContent = "Invalid birthdate format";
+				countError++;
+			}
 
-		if (!payload.mobile_number) {
-			mobileNumberErrMsg.textContent = "Mobile number is required";
-			countError++;
-		} else if (!payload.mobile_number.match(/^09[0-9]{9}$/)) {
-			mobileNumberErrMsg.textContent = "Invalid Philippine mobile number";
-			countError++;
-		}
+			if (!payload.mobile_number) {
+				mobileNumberErrMsg.textContent = "Mobile number is required";
+				countError++;
+			} else if (!payload.mobile_number.match(/^09[0-9]{9}$/)) {
+				mobileNumberErrMsg.textContent =
+					"Invalid Philippine mobile number";
+				countError++;
+			}
 
-		if (!payload.street_address) {
-			streetAddressErrMsg.textContent = "Street address is required";
-			countError++;
-		} else if (!payload.street_address.match(/^[A-Za-z0-9\s.,#-]+$/)) {
-			streetAddressErrMsg.textContent = "Invalid street address format";
-			countError++;
-		} else if (!payload.street_address.length > 5) {
-			streetAddressErrMsg.textContent =
-				"Street address must be at least 5 characters";
-			countError++;
-		}
+			if (!payload.street_address) {
+				streetAddressErrMsg.textContent = "Street address is required";
+				countError++;
+			} else if (!payload.street_address.match(/^[A-Za-z0-9\s.,#-]+$/)) {
+				streetAddressErrMsg.textContent =
+					"Invalid street address format";
+				countError++;
+			} else if (!payload.street_address.length > 5) {
+				streetAddressErrMsg.textContent =
+					"Street address must be at least 5 characters";
+				countError++;
+			}
 
-		if (!payload.city) {
-			cityErrMsg.textContent = "City is required";
-			countError++;
-		} else if (!payload.city.match(/^[A-Za-z\s]+$/)) {
-			cityErrMsg.textContent = "Invalid city format";
-			countError++;
-		} else if (!payload.city.length > 3) {
-			cityErrMsg.textContent = "City must be at least 3 characters";
-			countError++;
-		}
+			if (!payload.city) {
+				cityErrMsg.textContent = "City is required";
+				countError++;
+			} else if (!payload.city.match(/^[A-Za-z\s]+$/)) {
+				cityErrMsg.textContent = "Invalid city format";
+				countError++;
+			} else if (!payload.city.length > 3) {
+				cityErrMsg.textContent = "City must be at least 3 characters";
+				countError++;
+			}
 
-		if (!payload.state) {
-			stateErrMsg.textContent = "State is required";
-			countError++;
-		} else if (!payload.state.match(/^[A-Za-z\s]+$/)) {
-			stateErrMsg.textContent = "Invalid state format";
-			countError++;
-		} else if (!payload.state.length > 3) {
-			stateErrMsg.textContent = "State must be at least 3 characters";
-			countError++;
-		}
+			if (!payload.state) {
+				stateErrMsg.textContent = "State is required";
+				countError++;
+			} else if (!payload.state.match(/^[A-Za-z\s]+$/)) {
+				stateErrMsg.textContent = "Invalid state format";
+				countError++;
+			} else if (!payload.state.length > 3) {
+				stateErrMsg.textContent = "State must be at least 3 characters";
+				countError++;
+			}
 
-		if (!payload.zip_code) {
-			zipCodeErrMsg.textContent = "Zip code is required";
-			countError++;
-		} else if (payload.zip_code.length < 4 || payload.zip_code.length > 7) {
-			zipCodeErrMsg.textContent = "Invalid zip code format";
-			countError++;
+			if (!payload.zip_code) {
+				zipCodeErrMsg.textContent = "Zip code is required";
+				countError++;
+			} else if (
+				payload.zip_code.length < 4 ||
+				payload.zip_code.length > 7
+			) {
+				zipCodeErrMsg.textContent = "Invalid zip code format";
+				countError++;
+			}
+		}
+		isValidForm();
+
+		const err = document.getElementById("editError");
+		function clearError() {
+			firstNameErrMsg.textContent = "";
+			lastNameErrMsg.textContent = "";
+			emailErrMsg.textContent = "";
+			streetAddressErrMsg.textContent = "";
+			cityErrMsg.textContent = "";
+			stateErrMsg.textContent = "";
+			zipCodeErrMsg.textContent = "";
+			mobileNumberErrMsg.textContent = "";
+			birthdateErrMsg.textContent = "";
+			err.textContent = "";
 		}
 
 		if (countError > 0) {
-			const err = document.getElementById("editError");
 			err.textContent = "Invalid input";
 
 			setTimeout(() => {
-				err.textContent = "";
-			}, 3000);
+				clearError();
+				countError = 0;
+			}, 15000);
 
 			return;
 		}
