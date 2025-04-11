@@ -66,15 +66,15 @@
 								<input
 									type="text"
 									id="editFirstName"
-									minlength="3"
+									required
 									name="first_name" />
+								<span id="firstNameError"></span>
 							</div>
 							<div class="form-group">
 								<label for="editMiddleName">Middle Name:</label>
 								<input
 									type="text"
 									id="editMiddleName"
-									minlength="3"
 									name="middle_name" />
 							</div>
 							<div class="form-group">
@@ -82,19 +82,22 @@
 								<input
 									type="text"
 									id="editLastName"
-									minlength="3"
+									required
 									name="last_name" />
+								<span id="lastNameError"></span>
 							</div>
 							<div class="form-group">
 								<label for="editBirthdate">Birthdate: </label>
 								<input
 									type="date"
 									name="birthdate"
+									required
 									id="editBirthdate" />
+								<span id="birthdateError"></span>
 							</div>
 							<div class="form-group">
 								<label for="editGender">Gender: </label>
-								<select name="gender" id="editGender">
+								<select name="gender" id="editGender" required>
 									<option value="male">Male</option>
 									<option value="female">Female</option>
 									<option value="other">
@@ -108,16 +111,22 @@
 								</label>
 								<input
 									type="tel"
+									inputmode="numeric"
 									name="mobile_number"
-									pattern="09[0-9]{9}"
+									minlength="11"
+									maxlength="11"
+									required
 									id="editMobileNumber" />
+								<span id="mobileNumberError"></span>
 							</div>
 							<div class="form-group">
 								<label for="editEmail">Email:</label>
 								<input
 									type="email"
 									id="editEmail"
+									required
 									name="email" />
+								<span id="emailError"></span>
 							</div>
 						</fieldset>
 						<fieldset class="address-info">
@@ -131,12 +140,18 @@
 								<input
 									type="text"
 									id="editStreetAddress"
-									minlength="10"
+									required
 									name="street_address" />
+								<span id="streetAddressError"></span>
 							</div>
 							<div class="form-group">
 								<label for="editCity">City:</label>
-								<input type="text" id="editCity" name="city" />
+								<input
+									type="text"
+									id="editCity"
+									name="city"
+									required />
+								<span id="cityError"></span>
 							</div>
 							<div class="form-group">
 								<label for="editState">State:</label>
@@ -144,7 +159,9 @@
 									type="text"
 									id="editState"
 									minlength="3"
+									required
 									name="state" />
+								<span id="stateError"></span>
 							</div>
 							<div class="form-group">
 								<label for="editZipCode">Zip Code:</label>
@@ -153,25 +170,26 @@
 									id="editZipCode"
 									minlength="4"
 									maxlength="7"
+									required
 									name="zip_code" />
+								<span id="zipCodeError"></span>
 							</div>
 						</fieldset>
 						<fieldset class="student-info">
 							<legend class="information">
 								Student Information
 							</legend>
-							<div class="form-group">
-								<label for="editStudentID">Student ID:</label>
-								<input
-									type="text"
-									id="editStudentID"
-									minlength="8"
-									maxlength="8"
-									name="student_id" />
-							</div>
+							<input
+								type="number"
+								inputmode="numeric"
+								id="editStudentID"
+								minlength="8"
+								maxlength="8"
+								name="student_id"
+								hidden />
 							<div class="form-group">
 								<label for="editCourse">Course:</label>
-								<select name="course" id="course">
+								<select name="course" id="course" required>
 									<option value="bsa">BS Accountancy</option>
 									<option value="bsais">
 										BS Accounting Information System
@@ -217,28 +235,34 @@
 							</div>
 							<div class="form-group">
 								<label for="editYearLevel">Year Level:</label>
-								<input
-									type="number"
-									id="editYearLevel"
+								<select
 									name="year_level"
-									min="1"
-									max="4" />
+									id="editYearLevel"
+									required>
+									<option value="1">1st Year</option>
+									<option value="2">2nd Year</option>
+									<option value="3">3rd Year</option>
+									<option value="4">4th Year</option>
+								</select>
+								<span id="yearLevelError"></span>
 							</div>
 						</fieldset>
-					</form>
-				</div>
-				<span id="editModalError"></span>
+						<span id="editError" class="error"></span>
 
-				<div class="modal-buttons">
-					<button class="close-edit-modal" id="closeEditModal">
-						Cancel
-					</button>
-					<button
-						class="save-edit-modal"
-						id="saveEditModal"
-						type="submit">
-						Update
-					</button>
+						<div class="modal-buttons">
+							<button
+								class="close-edit-modal"
+								id="closeEditModal">
+								Cancel
+							</button>
+							<button
+								class="save-edit-modal"
+								id="saveEditModal"
+								type="submit">
+								Update
+							</button>
+						</div>
+					</form>
 				</div>
 			</dialog>
 		</div>

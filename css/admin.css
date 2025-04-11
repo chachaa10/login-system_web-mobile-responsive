@@ -259,7 +259,6 @@ form label {
 	flex-direction: column;
 }
 
-
 .close-edit-modal {
 	transition: all 0.3s ease;
 	cursor: pointer;
@@ -292,4 +291,16 @@ form label {
 		cursor: pointer;
 		background-color: rgb(1, 104, 1);
 	}
+}
+span.error {
+	display: block;
+	font-size: 1.125rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+span {
+	color: red;
+	font-weight: 500;
+	font-size: clamp(0.6rem, 1vw + 0.6rem, 1rem);
 }
